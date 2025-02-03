@@ -11,8 +11,8 @@ def run_whisper(audio_path):
     segments, info = model.transcribe(
         audio_path, 
         word_timestamps=True,
-        language="ko",  # 한국어 설정
-        task="transcribe"
+        #language="ko",  # 한국어 설정
+        #task="transcribe"
     )
     
     # 결과를 리스트로 변환
