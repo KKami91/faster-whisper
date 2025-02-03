@@ -5,10 +5,15 @@ from faster_whisper import WhisperModel
 
 def run_whisper(audio_path):
     # GPU로 모델 로드
-    model = WhisperModel("tiny", device="cuda")
+    model = WhisperModel("large-v2", device="cuda")  # 더 정확한 한국어 인식을 위해 large 모델 사용
     
-    # 음성 파일 처리
-    segments, info = model.transcribe(audio_path, word_timestamps=True)
+    # 한국어로 설정하여 음성 파일 처리
+    segments, info = model.transcribe(
+        audio_path, 
+        word_timestamps=True,
+        language="ko",  # 한국어 설정
+        task="transcribe"
+    )
     
     # 결과를 리스트로 변환
     results = []
